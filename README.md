@@ -1,94 +1,32 @@
 # Spike Agent
 
 [![GitHub stars](https://img.shields.io/github/stars/LiuLab-Bioelectronics-Harvard/SpikeAgent)](https://github.com/LiuLab-Bioelectronics-Harvard/SpikeAgent/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-https://doi.org/10.1101/2025.02.11.637754
 
 <p>
   <img src="https://github.com/user-attachments/assets/32dcee5b-fef2-41ea-9ac8-595cbe74bc07" width="5%">
 </p>
 
-## Overview  
-SpikeAgent is a multimodal large language model (LLM)-based AI agent that automates and standardizes the spike sorting pipeline, a critical process in neural signal decoding. Traditional workflows are fragmented, labor-intensive, and require expert curation, limiting scalability and reproducibility. SpikeAgent overcomes these challenges by leveraging LLMs for autonomous decision-making, reasoning, and interaction with intermediate results.  
+---
+## ⚠️ Important Notice: SpikeAgent Has Moved to a New Home
 
-## Related Work
+We are continuously improving **SpikeAgent**, and an updated, significantly more powerful version is now actively maintained at:
 
-SpikeAgent is part of a broader AI agent ecosystem developed for specialized biological data analysis. A complementary tool in this ecosystem is [STAgent](https://github.com/LiuLab-Bioelectronics-Harvard/STAgent.git), which focuses on spatial transcriptomics data analysis. 
+👉 **https://github.com/SpikeAgent/SpikeAgent**
 
-STAgent is described in our recent preprint: [https://doi.org/10.1101/2025.04.01.646731](https://doi.org/10.1101/2025.04.01.646731)
+This new repository reflects months of refinement and community feedback, and includes major new capabilities such as:
 
-## Features  
-- **End-to-End Automation** – Handles preprocessing, spike detection, feature extraction, clustering, and validation.  
-- **Multimodal Interaction** – Supports text, voice, and image-based inputs.  
-- **Autonomous Reasoning** – Uses LLMs and coding functions to optimize sorting without human intervention.  
-- **Interpretable Results** – Generates detailed reports explaining sorting decisions.  
-- **High Efficiency** – Reduces curation time from 40+ minutes to just a few minutes per 100 spikes.  
-- **Benchmark-Validated** – Matches or surpasses expert-level curation across various spike-sorting algorithms and electrode types.  
+- **Automated merging of units** for cleaner, more accurate spike catalogs  
+- **Drift correction support**, including compatibility with tools like *dredge*  
+- Numerous enhancements in robustness, performance, and agentic behavior  
 
-## Getting Started
+We have also (and keep improving) **packaged the ecosystem more cleanly**, including providing official containers for easier deployment and reproducibility.  
+You can find the new container builds here:
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/LiuLab-Bioelectronics-Harvard/SpikeAgent.git
-   cd SpikeAgent
-   ```
+👉 **https://github.com/arnaumarin/SpikeAgent/pkgs/container/spikeagent-cpu**
 
-2. Install the dependencies
+By creating a dedicated, standalone repository for ongoing development, we aim to maintain SpikeAgent more effectively, streamline updates, and support a growing user community.
 
-   We use conda to manage the dependencies and currently only support the Linux system.
+We encourage all users to transition to the new repository and take advantage of these improvements.  
+As always, we warmly welcome community contributions — please open issues or pull requests in the **new repo** if you encounter bugs, have ideas, or want to get involved.
 
-   ### Linux Users
-
-   ```bash
-   # Create the environment from the file
-   conda env create -f environment.linux.yml
-   
-   # Activate the environment
-   conda activate spike_agent
-   ```
-
-
-3. Set up your environment variables
-   - Create a `.env` file in the root directory
-   - Add your API key in this file. The API keys needed for this agent are:
-    ```
-    # If you want to use OpenAI models, you need to add the following:
-    OPENAI_API_KEY=your-api-key-here
-    OPENAI_API_BASE=your-api-base-here
-    WHISPER_API_KEY=your-whisper-api-key-here
-
-    # If you want to use Claude, you need to add the following:
-    ANTHROPIC_API_KEY=your-anthropic-api-key-here
-
-    # If you want to use Gemini, you need to add the following:
-    GOOGLE_API_KEY=your-google-api-key-here
-    ```
-
-4. (Optional) Modify the default parameters in `src/Agent/default.py`
-   - Set the `raw_data_path` to the path of your raw data.
-   - Set the `processed_path` to the path of your processed data.
-   - Set the `folder_name` to the data directory name under your raw data path.
-    
-    You may also directly share parameters with the agent and our agent will set them for you. 
-
-5. Run the app
-   ```bash
-   streamlit run src/unified_app.py
-   ```
-
-The app will open in your default web browser at the local host.
-
-## Usage
-1. `src`: this directory contains the source code of the spike sorting agent.
-2. `data`: this directory can be used to hold the data for the spike sorting. It also contains an example dataset in `raw_data/0330`. You can unzip the data files and testing with our agent.
-3. `src/tmp/plots`: this directory contains the plots generated by the agent.
-4. `conversation_histories_{model}`: these directories contains the conversation history of the agent classfied by the model used. You may load and save the conversation history with the agent.
-
-
-## Citation
-
-If you find SpikeAgent useful for your work, please cite our [paper](https://doi.org/10.1101/2025.02.11.637754): 
-
-> Zuwan Lin#, Arnau Marin-Llobet#, Jongmin Baek, Yichun He, Jaeyong Lee, Wenbo Wang, Xinhe Zhang, Ariel J. Lee, Ningyue Liang, Jin Du, Jie Ding, Na Li, Jia Liu*
-Preprint at bioRxiv (2025): https://doi.org/10.1101/2025.02.11.637754
+Thank you for helping us make SpikeAgent better for everyone!
